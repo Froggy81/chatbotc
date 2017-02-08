@@ -33,14 +33,14 @@ public class BasicLuisDialog : LuisDialog<object>
     [LuisIntent("Tickets")]
     public async Task TicketIntent(IDialogContext context, LuisResult result)
     {
-        await context.PostAsync($"You've asked about tickets with your query: {result.Query}");
+        await context.PostAsync($"You have asked about tickets with your query: {result.Query}"); //
         context.Wait(MesssageReceived);
     }
 
     [LuisIntent("Welcome")]
     public async Task WelcomeIntent(IDialogContext context, LuisResult result)
     {
-        await context.PostAsync($"You say hello I say hello {result.Query}");
+        await context.PostAsync($"You say hello I say hello {result.Query}"); //
         context.Wait(MessageReceived);
     }
 }
