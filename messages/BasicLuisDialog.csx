@@ -34,7 +34,7 @@ public class BasicLuisDialog : LuisDialog<object>
     public async Task TicketIntent(IDialogContext context, LuisResult result)
     {
         await context.PostAsync($"You have asked about tickets with your query: {result.Query}"); //
-        context.Wait(MesssageReceived);
+        context.Wait(MessageReceived);
     }
 
     [LuisIntent("Welcome")]
