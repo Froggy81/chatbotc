@@ -40,7 +40,7 @@ public class BasicLuisDialog : LuisDialog<object>
     [LuisIntent("Welcome")]
     public async Task WelcomeIntent(IDialogContext context, LuisResult result)
     {
-        await context.PostAsync($"You say hello I say hello {result.query}");
+        await context.PostAsync($"You say hello I say hello {result.Query}");
         context.Wait(MessageReceived);
     }
 }
