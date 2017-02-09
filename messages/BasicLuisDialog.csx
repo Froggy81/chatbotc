@@ -43,4 +43,11 @@ public class BasicLuisDialog : LuisDialog<object>
         await context.PostAsync($"You say hello I say hello {result.Query}"); //
         context.Wait(MessageReceived);
     }
+
+    [LuisIntent("footballclub")]
+    public async Task FootballClubIntent(IDialogContext context, LuisResult result)
+    {
+        await context.PostAsync($"What would you like to know about the Port Adelaide Football club?"); //
+        context.Wait(MessageReceived);
+    }
 }
