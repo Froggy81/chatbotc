@@ -33,7 +33,12 @@ public class BasicLuisDialog : LuisDialog<object>
     [LuisIntent("tickets")]
     public async Task TicketIntent(IDialogContext context, LuisResult result)
     {
+        var recommendation = new List<EntityRecommendation>(result.Entities);
+        //getTickets(recommendation);
+
         await context.PostAsync($"You have asked about tickets with your query: {result.Query}"); //
+        await context.PostAsync($"You sent me these entities: {result.Entities}");
+        
         context.Wait(MessageReceived);
     }
 
@@ -49,5 +54,5 @@ public class BasicLuisDialog : LuisDialog<object>
     {
         await context.PostAsync($"What would you like to know about the Port Adelaide Football club?"); //
         context.Wait(MessageReceived);
-    }
+    }    
 }
