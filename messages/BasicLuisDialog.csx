@@ -37,8 +37,10 @@ public class BasicLuisDialog : LuisDialog<object>
         //getTickets(recommendation);
 
         await context.PostAsync($"You have asked about tickets with your query: {result.Query}"); //
-        await context.PostAsync($"You sent me these entities: {result.Entities}");
-        
+        foreach (string l in recommendation)
+        {
+            await context.PostAsync($"You sent me these entities: " + l);
+        }
         context.Wait(MessageReceived);
     }
 
