@@ -33,7 +33,7 @@ public class BasicLuisDialog : LuisDialog<object>
     [LuisIntent("tickets")]
     public async Task TicketIntent(IDialogContext context, LuisResult result)
     {
-        List<string> ents = result.entities;
+        List<string> ents = result.Entities;
         //var recommendation2 = result.Entities.entity.FirstOrDefault();
         //getTickets(recommendation);
        
