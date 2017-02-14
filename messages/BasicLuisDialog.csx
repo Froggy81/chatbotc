@@ -33,9 +33,9 @@ public class BasicLuisDialog : LuisDialog<object>
     [LuisIntent("tickets")]
     public async Task TicketIntent(IDialogContext context, LuisResult result)
     {
-        var recommendation = luis.entities.Where(ent => ent.type == "ticket").FirstOrDefault()?.entity;
+        var recommendation = result.Entities.FirstOrDefault()?.entity;
         //getTickets(recommendation);
-
+       
         await context.PostAsync($"You have asked about tickets with your query: {result.Query}"); //
         await context.PostAsync($"You sent me these entities: " + recommendation);
         
