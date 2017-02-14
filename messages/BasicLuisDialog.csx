@@ -33,16 +33,12 @@ public class BasicLuisDialog : LuisDialog<object>
     [LuisIntent("tickets")]
     public async Task TicketIntent(IDialogContext context, LuisResult result)
     {
-        List<string> ents = result.Entities;
-        //var recommendation2 = result.Entities.entity.FirstOrDefault();
-        //getTickets(recommendation);
-       
         await context.PostAsync($"You have asked about tickets with your query: {result.Query}"); //
         //await context.PostAsync($"You sent me these entities: " + recommendation);  
 
-        for(int i = 0; i<ents.Count; i++)
+        for(int i = 0; i<result.Entities.Count; i++)
         {
-            await context.PostAsync($"You said this to MEEE: " + ents[i]);
+            await context.PostAsync($"You said this to MEEE: " + Result.Entities[i].type);
         }        
         context.Wait(MessageReceived);
     }
