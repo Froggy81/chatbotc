@@ -42,7 +42,7 @@ public class BasicLuisDialog : LuisDialog<object>
 
         for(int i = 0; i<ents.Count; i++)
         {
-            await context.PostAsync($"You said this to MEEE: " + ends[i]);
+            await context.PostAsync($"You said this to MEEE: " + ents[i]);
         }        
         context.Wait(MessageReceived);
     }
