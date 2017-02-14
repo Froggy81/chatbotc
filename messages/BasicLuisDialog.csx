@@ -34,11 +34,12 @@ public class BasicLuisDialog : LuisDialog<object>
     public async Task TicketIntent(IDialogContext context, LuisResult result)
     {
         var recommendation = result.Entities.FirstOrDefault();
+        var recommendation2 = result.Entities.FirstOrDefault().entity;
         //getTickets(recommendation);
        
         await context.PostAsync($"You have asked about tickets with your query: {result.Query}"); //
         await context.PostAsync($"You sent me these entities: " + recommendation.entity);
-        
+        await context.PostAsync($"You said this to MEEE: " + recommendation2);
         context.Wait(MessageReceived);
     }
 
