@@ -36,7 +36,7 @@ public class BasicLuisDialog : LuisDialog<object>
         await context.PostAsync($"You have asked about tickets with your query: {result.Query}"); //
 
         var entities = new List<EntityRecommendation>(result.Entities);
-        for (int i=0; i<entities.Length;i++)
+        for (int i=0; i<entities.Count;i++)
         {
             await context.PostAsync($"You have an entity: " + entities[i]);
         }
