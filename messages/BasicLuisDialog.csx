@@ -39,11 +39,21 @@ public class BasicLuisDialog : LuisDialog<object>
         for (int i=0; i<entities.Count;i++)
         {
             await context.PostAsync($"You have an entity: " + entities[i].Type);
+            if(entities[i].Type == "tickets")
+            {
+                getTickets(result.Query);
+            }
         }
 
         await context.PostAsync($"You have asked about tickets using entity: {result.Entities.FirstOrDefault().Type}");
                 
         context.Wait(MessageReceived);
+    }
+
+    private async Task getTickets(LuisResult result)
+    {
+        await Context.PostAsync($"you are in the get tickets function");
+        ContextBoundObject.Wait(MessageReceived);
     }
 
     [LuisIntent("Welcome")]
@@ -58,5 +68,5 @@ public class BasicLuisDialog : LuisDialog<object>
     {
         await context.PostAsync($"What would you like to know about the Port Adelaide Football club?"); //
         context.Wait(MessageReceived);
-    }    
+    }        
 }
