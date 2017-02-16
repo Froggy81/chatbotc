@@ -42,8 +42,7 @@ public class BasicLuisDialog : LuisDialog<object>
             await context.PostAsync($"You have an entity: " + entities[i].Entity);           
         }
 
-        await context.PostAsync($"You have asked about tickets using entity: {result.Entities.FirstOrDefault().Type}");
-                
+        //await context.PostAsync($"You have asked about tickets using entity: {result.Entities.FirstOrDefault().Type}");               
         context.Wait(MessageReceived);
     }
 
