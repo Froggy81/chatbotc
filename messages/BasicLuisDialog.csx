@@ -47,12 +47,6 @@ public class BasicLuisDialog : LuisDialog<object>
         context.Wait(MessageReceived);
     }
 
-    //private async Task getTickets(LuisResult result)
-    //{
-    //    await Context.PostAsync($"you are in the get tickets function");
-    //    ContextBoundObject.Wait(MessageReceived);
-    //}
-
     [LuisIntent("Welcome")]
     public async Task WelcomeIntent(IDialogContext context, LuisResult result)
     {
