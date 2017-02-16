@@ -30,24 +30,24 @@ public class BasicLuisDialog : LuisDialog<object>
         context.Wait(MessageReceived);
     }
 
-    [LuisIntent("tickets")]
-    public async Task TicketIntent(IDialogContext context, LuisResult result)
-    {
-        await context.PostAsync($"You have asked about tickets with your query: {result.Query}"); //              
-        context.Wait(MessageReceived);
-    }
+    //[LuisIntent("tickets")]
+    //public async Task TicketIntent(IDialogContext context, LuisResult result)
+    //{
+    //    await context.PostAsync($"You have asked about tickets with your query: {result.Query}"); //              
+    //    context.Wait(MessageReceived);
+    //}
 
-    [LuisIntent("Welcome")]
-    public async Task WelcomeIntent(IDialogContext context, LuisResult result)
-    {
-        await context.PostAsync($"You say hello I say hello {result.Query}"); //
-        context.Wait(MessageReceived);
-    }
+    //[LuisIntent("Welcome")]
+    //public async Task WelcomeIntent(IDialogContext context, LuisResult result)
+    //{
+    //    await context.PostAsync($"You say hello I say hello {result.Query}"); //
+    //    context.Wait(MessageReceived);
+    //}
 
-    [LuisIntent("footballclub")]
-    public async Task FootballClubIntent(IDialogContext context, LuisResult result)
-    {
-        await context.PostAsync($"What would you like to know about the Port Adelaide Football club?"); //
-        context.Wait(MessageReceived);
-    }        
+    //[LuisIntent("footballclub")]
+    //public async Task FootballClubIntent(IDialogContext context, LuisResult result)
+    //{
+    //    await context.PostAsync($"What would you like to know about the Port Adelaide Football club?"); //
+    //    context.Wait(MessageReceived);
+    //}        
 }
