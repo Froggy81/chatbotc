@@ -36,13 +36,10 @@ public class BasicLuisDialog : LuisDialog<object>
         await context.PostAsync($"You have asked about tickets with your query: {result.Query}"); //
         
         var entities = new List<EntityRecommendation>(result.Entities);
+
         for (int i=0; i<entities.Count;i++)
         {
-            await context.PostAsync($"You have an entity: " + entities[i].Type);
-            if(entities[i].Type == "tickets")
-            {
-                getTickets(result.Query);
-            }
+            await context.PostAsync($"You have an entity: " + entities[i].Entity);           
         }
 
         await context.PostAsync($"You have asked about tickets using entity: {result.Entities.FirstOrDefault().Type}");
@@ -50,11 +47,11 @@ public class BasicLuisDialog : LuisDialog<object>
         context.Wait(MessageReceived);
     }
 
-    private async Task getTickets(LuisResult result)
-    {
-        await Context.PostAsync($"you are in the get tickets function");
-        ContextBoundObject.Wait(MessageReceived);
-    }
+    //private async Task getTickets(LuisResult result)
+    //{
+    //    await Context.PostAsync($"you are in the get tickets function");
+    //    ContextBoundObject.Wait(MessageReceived);
+    //}
 
     [LuisIntent("Welcome")]
     public async Task WelcomeIntent(IDialogContext context, LuisResult result)
