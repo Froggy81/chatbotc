@@ -38,7 +38,16 @@ public class BasicLuisDialog : LuisDialog<object>
         var entities = new List<EntityRecommendation>(result.Entities);
 
         for (int i=0; i<entities.Count;i++)
-        {      
+        {
+            if (entities[i].Entity == "general admission tickets")
+            {
+                await context.PostAysnc($"You want a general admission ticket");
+            }
+            if (int.TryParse(entities[i].Entity))
+                {
+                await context.PostAsync($"You want to buy : " + entities[i].Entity + "tickets?");
+            }
+
             await context.PostAsync($"You have an entity: " + entities[i].Entity);           
         }
                         
