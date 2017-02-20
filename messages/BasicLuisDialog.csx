@@ -62,6 +62,24 @@ public class BasicLuisDialog : LuisDialog<object>
         context.Wait(MessageReceived);
     }
 
+    private async Task OrderAgainAsync(IDialogContext context, IAwaitable<bool> result)
+    {
+        // Generate new random number        
+        // Get the response from the user
+        var confirm = await result;
+        if (confirm) // They said yes
+        {
+            // Start a new Game
+            await context.PostAsync("I have ordered those for you");
+            context.Wait(MessageReceivedAsync);
+        }
+        else // They said no
+        {
+            await context.PostAsync("How many did you want?");
+            context.Wait(MessageReceivedAsync);
+        }
+    }
+
     [LuisIntent("Welcome")]
     public async Task WelcomeIntent(IDialogContext context, LuisResult result)
     {
