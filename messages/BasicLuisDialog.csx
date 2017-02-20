@@ -43,10 +43,10 @@ public class BasicLuisDialog : LuisDialog<object>
             {
                 await context.PostAysnc($"You want a general admission ticket");
             }
-            if (int.TryParse(entities[i].Entity))
-                {
-                await context.PostAsync($"You want to buy : " + entities[i].Entity + "tickets?");
-            }
+            //if (int.TryParse(entities[i].Entity))
+            //    {
+            //    await context.PostAsync($"You want to buy : " + entities[i].Entity + "tickets?");
+            //}
 
             await context.PostAsync($"You have an entity: " + entities[i].Entity);           
         }
