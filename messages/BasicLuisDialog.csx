@@ -44,16 +44,16 @@ public class BasicLuisDialog : LuisDialog<object>
         {
             if(entities[i].Type == "builtin.number")
             {
-                tickets = int.TryParse(entities[i].Entity);
+                tickets = int32.TryParse(entities[i].Entity);
             }
             if (entities[i].Entity == "general admission tickets")
             {
                 ticketType = entities[i].Entity;
-            }
-
-            await context.PostAsync($"You want to buy " + tickets + " " + ticketType + "?");
+            }           
         }
-                        
+
+        await context.PostAsync($"You want to buy " + tickets + " " + ticketType + "?");
+
         context.Wait(MessageReceived);
     }
 
