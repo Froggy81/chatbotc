@@ -35,8 +35,8 @@ public class BasicLuisDialog : LuisDialog<object>
     {
         await context.PostAsync($"You have asked about tickets with your query: {result.Query}"); //
 
-        int tickets;
-        String ticketType;
+        int tickets = 0; ;
+        String ticketType = "";
 
         var entities = new List<EntityRecommendation>(result.Entities);
 
