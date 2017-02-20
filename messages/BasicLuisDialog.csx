@@ -52,7 +52,8 @@ public class BasicLuisDialog : LuisDialog<object>
             }           
         }
 
-        await context.PostAsync($"You want to buy " + tickets + " " + ticketType + "?");
+        await context.PostAsync($"Yes you can buy " + tickets + " " + ticketType + ".  They are 24.95 each, would you like to proceed?");
+        await context.Prompt(session, "Are you sure?");
 
         context.Wait(MessageReceived);
     }
@@ -60,7 +61,7 @@ public class BasicLuisDialog : LuisDialog<object>
     [LuisIntent("Welcome")]
     public async Task WelcomeIntent(IDialogContext context, LuisResult result)
     {
-        await context.PostAsync($"You say hello I say hello {result.Query}"); //
+        await context.PostAsync($"Hi,  how can I help you today?"); //
         context.Wait(MessageReceived);
     }
 
