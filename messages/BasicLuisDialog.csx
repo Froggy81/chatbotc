@@ -34,18 +34,21 @@ public class BasicLuisDialog : LuisDialog<object>
     public async Task TicketIntent(IDialogContext context, LuisResult result)
     {
         await context.PostAsync($"You have asked about tickets with your query: {result.Query}"); //
-        
+
+        int tickets;
+        String ticketType;
+
         var entities = new List<EntityRecommendation>(result.Entities);
 
         for (int i=0; i<entities.Count;i++)
         {
             if(entities[i].Type == "builtin.number")
             {
-                int tickets = entities[i].Entity;
+                tickets = int.TryParse(entities[i].Entity);
             }
             if (entities[i].Entity == "general admission tickets")
             {
-                String ticketType = entities[i].Entity;
+                ticketType = entities[i].Entity;
             }
 
             await context.PostAsync($"You want to buy " + tickets + " " + ticketType + "?");
