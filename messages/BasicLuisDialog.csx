@@ -53,7 +53,11 @@ public class BasicLuisDialog : LuisDialog<object>
         }
 
         await context.PostAsync($"Yes you can buy " + tickets + " " + ticketType + ".  They are 24.95 each, would you like to proceed?");
-        await context.Prompt(session, "Are you sure?");
+        PromptDialog.Confirm(
+            context,
+            OrderAgainAsync,
+            "Is this correct?",
+            "Didn't get that!");
 
         context.Wait(MessageReceived);
     }
