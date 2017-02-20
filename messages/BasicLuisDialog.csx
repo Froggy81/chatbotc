@@ -71,12 +71,12 @@ public class BasicLuisDialog : LuisDialog<object>
         {
             // Start a new Game
             await context.PostAsync("I have ordered those for you");
-            context.Wait(MessageReceivedAsync);
+            context.Wait(MessageReceived);
         }
         else // They said no
         {
             await context.PostAsync("How many did you want?");
-            context.Wait(MessageReceivedAsync);
+            context.Wait(MessageReceived);
         }
     }
 
