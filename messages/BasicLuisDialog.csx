@@ -41,15 +41,14 @@ public class BasicLuisDialog : LuisDialog<object>
         {
             if(entities[i].Type == "builtin.number")
             {
-                await context.PostAsync($"You want to buy " + entities[i].Entity);
+                int tickets = entities[i].Entity;
             }
-            //if (entities[i].Entity == "general admission tickets")
-            //{
-            //    await context.PostAysnc($"You want a general admission ticket");
-            //}
+            if (entities[i].Entity == "general admission tickets")
+            {
+                String ticketType = entities[i].Entity;
+            }
 
-            await context.PostAsync($"You have an entity: " + entities[i].Entity);
-            await context.PostAsync($"You have an entity: " + entities[i].Type);
+            await context.PostAsync($"You want to buy " + tickets + " " + ticketType + "?");
         }
                         
         context.Wait(MessageReceived);
