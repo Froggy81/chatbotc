@@ -44,7 +44,7 @@ public class BasicLuisDialog : LuisDialog<object>
         {
             if(entities[i].Type == "builtin.number")
             {
-                tickets = int32.TryParse(entities[i].Entity);
+                int32.TryParse(entities[i].Entity, out tickets);
             }
             if (entities[i].Entity == "general admission tickets")
             {
