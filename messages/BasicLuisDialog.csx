@@ -48,7 +48,8 @@ public class BasicLuisDialog : LuisDialog<object>
             //    await context.PostAysnc($"You want a general admission ticket");
             //}
 
-            await context.PostAsync($"You have an entity: " + entities[i].Entity);           
+            await context.PostAsync($"You have an entity: " + entities[i].Entity);
+            await context.PostAsync($"You have an entity: " + entities[i].Type);
         }
                         
         context.Wait(MessageReceived);
