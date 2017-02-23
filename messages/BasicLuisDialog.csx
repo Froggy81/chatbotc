@@ -56,7 +56,7 @@ public class BasicLuisDialog : LuisDialog<object>
         PromptDialog.Confirm(context, OrderAgainAsync, "Are you sure?", promptStyle: PromptStyle.None);
         //PromptDialog.Confirm(context, OrderAgainAsync, "Is this correct?",  "Didn't get that!");
 
-        context.Wait(MessageReceived);
+        //context.Wait(MessageReceived);
     }
 
     private async Task OrderAgainAsync(IDialogContext context, IAwaitable<bool> result)
